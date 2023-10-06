@@ -40,14 +40,14 @@ WARNING: With the sample project the my-authetication.js fie is only a proxy so 
 ### Customers API
 
 To create a customer send a request to your server. If you are running this locally, it will be http://localhost:3000
-
+'''
    {
         "email": "mj@mj.com",
 	    "firstName": "michael",
 	    "lastName": "jordan",
 	    "phoneNumber": "0400000000"
    }
-
+'''
 This creates a very basic customer. In the file customer.js you will see that some of the fields are defaulted such as CountryISO. Refer to [Customer documentation](https://help.payadvantage.com.au/hc/en-us/articles/360000279455-Customers-BPAY-Reference) for more detail on the available fields when creating a customer.
  
 
@@ -55,13 +55,13 @@ This creates a very basic customer. In the file customer.js you will see that so
 
 To create a payment request link for a customer send a request to your server. If you are running this locally, it will be http://localhost:3000
 
-  {
+'''  {
 	"customerCode":"SQPN6A",
 	"description":"This is a payment description",
 	"externalID":"ABC123",
 	"amount":"39.90"
 }
-
+'''
 This creates a very basic payment. In the file payment.js you will see that some of the fields are defaulted such sendintialLink. This is a handy feature as your customer will instantly receie an email and SMS asking them for the payment, however, you may prefer to share the link yourself, in which case this field will need to be set to false. Refer to [Payment request documentation](https://help.payadvantage.com.au/hc/en-us/articles/4453569613967-Payment-Request-Links) for more detail on the available fields when creating a payment request.
 
 
