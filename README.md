@@ -40,12 +40,14 @@ WARNING: With the sample project the my-authetication.js fie is only a proxy so 
 ### Customers API
 
 To create a customer send a request to your server. If you are running this locally, it will be http://localhost:3000
+
 `{
         "email": "mj@mj.com",
 	    "firstName": "michael",
 	    "lastName": "jordan",
 	    "phoneNumber": "0400000000"
    }`
+
 This creates a very basic customer. In the file customer.js you will see that some of the fields are defaulted such as CountryISO. Refer to [Customer documentation](https://help.payadvantage.com.au/hc/en-us/articles/360000279455-Customers-BPAY-Reference) for more detail on the available fields when creating a customer.
  
 
@@ -69,4 +71,8 @@ To receive a webhook to your server. Simply create a customer, or complete a pay
 This example writes the output of the webhook to the console. For best practice you should write the webhook information to your database and then respond with a 202 success. If the webhook endpoint a different response that is not a success response then it will try to send the webhooks again.
 This example also deletes old webhooks when it is stopped and started. Storing the webhook secret will allow you to start and stop the server without needing to create a new webhook endpoint. 
 Refer to [Webhook documentation](https://help.payadvantage.com.au/hc/en-us/articles/360002909095-Webhooks) for more detail.
+
+### Webhook set up for local environment
+In order to set up a webhook to test locally you will need to expose an API to the internet. This can be done using ngrok.
+
 
