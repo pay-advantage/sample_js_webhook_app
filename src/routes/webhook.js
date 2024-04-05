@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(express.json());
 
 function validateWebhookSchema(item){
-  return item.hasOwnProperty("Code") && item.hasOwnProperty("DateCreated") && item.hasOwnProperty("DateUpdated")  && item.hasOwnProperty("Event") && item.hasOwnProperty("Status") && item.hasOwnProperty("ResourceCode") && item.hasOwnProperty("ResourceUrl") && item.hasOwnProperty("MerchantCode") && item.hasOwnProperty("EndpointCode") && item.hasOwnProperty("EndpointUrl") && item.hasOwnProperty("Data")
+  return item.hasOwnProperty("Code") && item.hasOwnProperty("DateCreated") && item.hasOwnProperty("DateUpdated")  && item.hasOwnProperty("Event") && item.hasOwnProperty("Status") && item.hasOwnProperty("ResourceCode") && item.hasOwnProperty("ResourceUrl") && item.hasOwnProperty("MerchantCode") && item.hasOwnProperty("EndpointCode") && item.hasOwnProperty("EndpointUrl")
 }
 
 function computeHMAC(rawContent, secret) {
