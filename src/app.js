@@ -11,6 +11,15 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 app.use(authenticate);
 
+app.use(
+  express.json({
+    limit: '5mb',
+    verify: (req, res, buf) => {
+      req.rawBody = buf.toString();
+    },
+  })
+);
+
 app.use('/customer', customerRoute);
 app.use('/webhook', webhookRoute);
 app.use('/payment-request', paymentRequestRoute);

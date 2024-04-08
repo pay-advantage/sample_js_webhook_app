@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(express.json());
 
 function validateWebhookSchema(item){
-  return item.hasOwnProperty("Code") && item.hasOwnProperty("DateCreated") && item.hasOwnProperty("DateUpdated")  && item.hasOwnProperty("Event") && item.hasOwnProperty("Status") && item.hasOwnProperty("ResourceCode") && item.hasOwnProperty("ResourceUrl") && item.hasOwnProperty("MerchantCode") && item.hasOwnProperty("EndpointCode") && item.hasOwnProperty("EndpointUrl") && item.hasOwnProperty("Data")
+  return item.hasOwnProperty("Code") && item.hasOwnProperty("DateCreated") && item.hasOwnProperty("Event") && item.hasOwnProperty("Status") && item.hasOwnProperty("ResourceUrl")
 }
 
 function computeHMAC(rawContent, secret) {
@@ -24,8 +24,7 @@ router.post('/', async (req, res) => {
     const secret = `${getWebhookSecret()}`;
     const hmac = crypto.createHmac('sha256', secret);
 
-      hmac.update(JSON.stringify(req.body));
-      const hmacSignature = computeHMAC(JSON.stringify(req.body), secret);
+      const hmacSignature = computeHMAC(req.rawBody, secret);
       console.log(`Signatures should match = ${req.headers['x-payadvantage-signature']} & ${hmacSignature}`);
 
       if (!req.body || req.body ===  null || req.body.length === 0){
